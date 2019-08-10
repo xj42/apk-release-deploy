@@ -83,7 +83,7 @@ def upload_to_dropbox(target_file_name, source_file, dropbox_token, dropbox_fold
     headers = {'Authorization': 'Bearer ' + dropbox_token,
                'Dropbox-API-Arg': json.dumps(DROPBOX_UPLOAD_ARGS),
                'Content-Type': 'application/octet-stream'}
-
+    print(headers)
     # Upload the file
     r = requests.post(DROPBOX_UPLOAD_URL, data=open(source_file, 'rb'), headers=headers)
 
@@ -263,8 +263,6 @@ if __name__ == '__main__':
     target_app_file = get_target_file_name(options.app_name, app_version)
 
     # Upload app file and get shared url
-    print(options.dropbox_token)
-    print("token was here")
     file_url = upload_to_dropbox(target_app_file, app_file, options.dropbox_token, options.dropbox_folder)
     if file_url == None:
         exit(DROPBOX_ERROR_CODE)
