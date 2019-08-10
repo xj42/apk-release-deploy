@@ -250,8 +250,8 @@ if __name__ == '__main__':
     parser.add_argument('--template.file', dest='template_file', help='path to email template file', required=True)
     parser.add_argument('--dropbox.token', dest='dropbox_token', help='dropbox access token', required=True)
     parser.add_argument('--dropbox.folder', dest='dropbox_folder', help='dropbox target folder', required=True)
-    parser.add_argument('--zapier.hook', dest='zapier_hook', help='zapier email web hook', required=True)
-    parser.add_argument('--email.to', dest='email_to', help='email recipients', required=True)
+ #   parser.add_argument('--zapier.hook', dest='zapier_hook', help='zapier email web hook', required=True)
+ #   parser.add_argument('--email.to', dest='email_to', help='email recipients', required=True)
 
     options = parser.parse_args()
 
@@ -263,6 +263,7 @@ if __name__ == '__main__':
     target_app_file = get_target_file_name(options.app_name, app_version)
 
     # Upload app file and get shared url
+    print(options.dropbox_token)
     file_url = upload_to_dropbox(target_app_file, app_file, options.dropbox_token, options.dropbox_folder)
     if file_url == None:
         exit(DROPBOX_ERROR_CODE)
@@ -273,10 +274,10 @@ if __name__ == '__main__':
         exit(CHANGES_ERROR_CODE)
     
     # Compose email subject and body
-    subject, body = get_email(options.app_name, app_version, file_url, latest_changes, options.template_file)
-    if subject == None or body == None:
-        exit(TEMPLATE_ERROR_CODE)
+#    subject, body = get_email(options.app_name, app_version, file_url, latest_changes, options.template_file)
+#    if subject == None or body == None:
+#        exit(TEMPLATE_ERROR_CODE)
     
     # Send email with release data
-    if not send_email(options.zapier_hook, options.email_to, subject, body):
-        exit(ZAPIER_ERROR_CODE)
+#    if not send_email(options.zapier_hook, options.email_to, subject, body):
+#        exit(ZAPIER_ERROR_CODE)
