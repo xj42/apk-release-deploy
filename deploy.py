@@ -83,7 +83,7 @@ def upload_to_dropbox(target_file_name, source_file, dropbox_token, dropbox_fold
     headers = {'Authorization': 'Bearer ' + dropbox_token,
                'Dropbox-API-Arg': json.dumps(DROPBOX_UPLOAD_ARGS),
                'Content-Type': 'application/octet-stream'}
-    print(headers)
+
     # Upload the file
     r = requests.post(DROPBOX_UPLOAD_URL, data=open(source_file, 'rb'), headers=headers)
 
