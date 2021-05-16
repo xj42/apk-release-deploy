@@ -141,7 +141,7 @@ def get_app(release_dir):
 
     with(open(output_path)) as app_output:
         json_data = json.load(app_output)
-
+    print(json_data)
     apk_details_key = ''
     if 'elements' in json_data[0]:
         apk_details_key = 'elements'
