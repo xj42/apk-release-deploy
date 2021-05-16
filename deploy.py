@@ -137,7 +137,7 @@ def get_app(release_dir):
     Returns:
         (str, str): App version and path to release apk file.
     '''
-    output_path = os.path.join(release_dir, 'output.json')
+    output_path = os.path.join(release_dir, 'output-metadata.json')
 
     with(open(output_path)) as app_output:
         json_data = json.load(app_output)
