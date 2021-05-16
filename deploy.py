@@ -144,7 +144,7 @@ def get_app(release_dir):
 
     apk_details_key = ''
     if 'apkInfo' in json_data[0]:
-        apk_details_key = 'apkInfo'
+        apk_details_key = 'elements'
     elif 'apkData' in json_data[0]:
         apk_details_key = 'apkData'
     else:
